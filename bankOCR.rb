@@ -119,13 +119,11 @@ class Scan
     @num_bits.each do |_k, v|
       bits_array << v
     end
-    bits_array.each do |v|
-      v.each do |char|
+    bits_array.each_with_index do |v, i|
+      v.each_with_index do |char, j|
         // replace char with alternates and check validity
 
-
-
-
+      end
     end
   end
 end
