@@ -3,9 +3,10 @@ class Scan
     puts 'Scanning now ...'
     puts input
     @input = input
-    @digits
+    @digits = ''
     @check = false
-    @appended_digits
+    @checked = false
+    @appended_digits = ''
     @ref = {
       ' _ | ||_|' => 0,
       '     |  |' => 1,
@@ -58,8 +59,7 @@ class Scan
   end
 
   def user_story_1
-    standardise
-    organise
+    organise if @num_bits[:one].empty?
     puts 'Converting scan to digits...'
     digits = []
     @num_bits.each do |_k, v|
@@ -75,7 +75,7 @@ class Scan
   end
 
   def user_story_2
-    user_story_1
+    user_story_1 if @digits == ''
     puts 'Checking validity...'
     reversed_strings = @digits.split('').reverse
     reversed_ints = reversed_strings.map(&:to_i)
@@ -91,10 +91,11 @@ class Scan
       puts 'The number is invalid.'
     end
     @check = check
+    @checked = true
   end
 
   def user_story_3
-    user_story_2
+    user_story_2 unless @checked = true
     puts 'Appending to invalid numbers or unreadable text...'
     num = @digits.to_i
     if @check
@@ -110,9 +111,18 @@ class Scan
   end
 
   def user_story_4
-    user_story_3
-    puts "Checking for possible scanning errors..."
-    
+    user_story_3 if @appended_digits = ''
+    puts 'Checking for possible scanning errors...'
+    digits_array = @digits.split('')
+    bits_array = []
+    possibles = []
+    @num_bits.each do |_k, v|
+      bits_array << v
+    end
+    bits_array.each do |v|
+      v.each do |char|
+        
+    end
   end
 end
 
@@ -206,6 +216,6 @@ test8 = ["
 "]
 
 new_scan = Scan.new(test7)
-# new_scan.standardise
+new_scan.standardise
 new_scan.user_story_2
 new_scan.user_story_4
