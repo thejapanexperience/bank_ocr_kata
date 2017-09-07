@@ -50,8 +50,8 @@ userStory1 = function(input) {
 
 
   // Standardise the inputs to a fixed length for each line
-  originArr = input.split("\n")
-  arr = originArr.map((innerArr) => {
+  let originArr = input.split("\n")
+  let arr = originArr.map((innerArr) => {
     return innerArr.split("")
   })
 
