@@ -121,7 +121,11 @@ class Scan
     end
     bits_array.each do |v|
       v.each do |char|
-        
+        // replace char with alternates and check validity
+
+
+
+
     end
   end
 end
